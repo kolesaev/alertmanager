@@ -70,13 +70,9 @@ func NewChannel(
 		ConstLabels: prometheus.Labels{"key": key},
 	})
 	oversizeGossipDuration := prometheus.NewHistogram(prometheus.HistogramOpts{
-		Name:                            "alertmanager_oversize_gossip_message_duration_seconds",
-		Help:                            "Duration of oversized gossip message requests.",
-		ConstLabels:                     prometheus.Labels{"key": key},
-		Buckets:                         prometheus.DefBuckets,
-		NativeHistogramBucketFactor:     1.1,
-		NativeHistogramMaxBucketNumber:  100,
-		NativeHistogramMinResetDuration: 1 * time.Hour,
+		Name:        "alertmanager_oversize_gossip_message_duration_seconds",
+		Help:        "Duration of oversized gossip message requests.",
+		ConstLabels: prometheus.Labels{"key": key},
 	})
 
 	reg.MustRegister(oversizeGossipDuration, oversizeGossipMessageFailureTotal, oversizeGossipMessageDroppedTotal, oversizeGossipMessageSentTotal)

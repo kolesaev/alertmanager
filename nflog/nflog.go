@@ -139,12 +139,8 @@ func newMetrics(r prometheus.Registerer) *metrics {
 		Help: "Number notification log received queries that failed.",
 	})
 	m.queryDuration = prometheus.NewHistogram(prometheus.HistogramOpts{
-		Name:                            "alertmanager_nflog_query_duration_seconds",
-		Help:                            "Duration of notification log query evaluation.",
-		Buckets:                         prometheus.DefBuckets,
-		NativeHistogramBucketFactor:     1.1,
-		NativeHistogramMaxBucketNumber:  100,
-		NativeHistogramMinResetDuration: 1 * time.Hour,
+		Name: "alertmanager_nflog_query_duration_seconds",
+		Help: "Duration of notification log query evaluation.",
 	})
 	m.propagatedMessagesTotal = prometheus.NewCounter(prometheus.CounterOpts{
 		Name: "alertmanager_nflog_gossip_messages_propagated_total",
